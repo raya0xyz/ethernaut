@@ -43,3 +43,36 @@ If solidity scritp have **multiple contract**. Then you'll have to specify which
 Either as **`forge script script/<script.s.sol> --tc <contract_name> -v --broadcast`** or **`forge script script/<script.s.sol>:<ContractName> -v --broadcast`**.
 
 
+### Few Setup to consider
+If you want to run locally, then create a new project with forge.
+```
+forge init . 
+```
+
+At **.env** file fill up these parameter form informaton of you meta-mask.
+```
+PRIVATE_KEY = "<wallet_private_key>"
+MY_ADDRESS = "<wallet_address>"
+ETHERSCAN_KEY = "<Self-explained>"
+```
+
+At **foundry.toml** check if you file is similar to this
+```
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+remappings = [
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "@openzeppelin-06/=lib/openzeppelin-contracts-06/",
+]
+
+# eth_rpc_url = 'https://rpc.ankr.com/eth_goerli'
+# eth_rpc_url = 'https://rpc.ankr.com/eth_sepolia'
+
+# Get your own URL from rpc.ankr.com | Log in and choose for eth_sepolia Testnet |
+eth_rpc_url = 'https://rpc.ankr.com/eth_sepolia/<...>'
+etherscan_api_key = '${<etherscan_api_key>}'
+
+```
